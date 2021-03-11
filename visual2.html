@@ -1,15 +1,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 <canvas id="myChart" width="350" height="167"></canvas>
-<h1 style="text-align: center">Starbucks Locations per County</h1>
+
 <script>
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Orange County', 'Los Angeles County', 'Santa Clara County', 'Sacramento County', 'San Diego County', 'Riverside County','San Bernardino County', 'Alameda County'],
         datasets: [{
-            //label: '# of Starbucks Locations',
+            label: 'Number of Starbucks Locations per County',
+            xAxisID: 'County',
+            yAxisID: 'Count of Starbucks Locations',
             data: [253, 591, 165, 113, 265, 125, 97, 103],
             backgroundColor: [
                 'rgba(255, 99, 132, 1)',
