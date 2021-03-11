@@ -6,17 +6,19 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Orange County', 'Los Angeles County', 'Santa Clara County', 'Sacramento County', 'San Diego County', 'Riverside County','San Bernardino County', 'Alameda County'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '# of Starbucks Locations',
+            data: [253, 591, 165, 113, 265, 125, 97, 103],
             backgroundColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(191, 65, 63, 1)',
+                'rgba(63, 65, 191, 1)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -24,7 +26,9 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(191, 65, 63, 1)',
+                'rgba(63, 65, 191, 1)'
             ],
             borderWidth: 1
         }]
