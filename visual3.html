@@ -1,24 +1,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
-<canvas id="myChart" width="350" height="167"></canvas>
+<canvas id="myChart" width="360" height="155"></canvas>
+
 <script>
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Orange County', 'Los Angeles County', 'Santa Clara County', 'Sacramento County', 'San Diego County', 'Riverside County','San Bernardino County', 'Alameda County'],
         datasets: [{
-            label: '# of Starbucks Locations',
+            label: 'Number of Starbucks Locations per County',
             data: [253, 591, 165, 113, 265, 125, 97, 103],
             backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(191, 65, 63, 1)',
-                'rgba(63, 65, 191, 1)'
+                'rgba(255, 99, 132, .8)',
+                'rgba(54, 162, 235, .8)',
+                'rgba(255, 206, 86, .8)',
+                'rgba(75, 192, 192, .8)',
+                'rgba(153, 102, 255, .8)',
+                'rgba(255, 159, 64, .8)',
+                'rgba(191, 65, 63, .8)',
+                'rgba(63, 65, 191, .8)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -44,3 +46,19 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+<p> </p>
+<style>
+div {
+  padding-top: 5px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
+</style>
+
+<h2 style="text-align: center;">Changes I made</h2>
+
+<div>In this version of my chart I scaled the height and width to fit inside of the window. For clarification, the window I am basing my size off of is a MacBook Pro. If I were using a larger computer screen I might need to alter my height and width of my chart to fit that screen. I have also changed the opacity to be slightly lighter so when the user hovers over a bar it gets darker. Lastly. I have added a footer that takes you back to my Weekly Assignment 7 home page where you can find links to all three charts for this assignment.</div>
+<footer>
+    <h3 style="text-align: center;"><a href="wa7.html">Back to Weekly Assignment 7</a></h3>
+</footer>
