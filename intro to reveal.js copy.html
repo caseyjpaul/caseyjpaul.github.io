@@ -33,6 +33,17 @@
 					<p>This is my gif slide on 3402!</p>
 					<img src="https://media.giphy.com/media/kc0kqKNFu7v35gPkwB/giphy.gif">
 				</section>
+
+				<section>
+					<p>Here is a slide with a code block</p>
+					<pre><code data-trim data-noescape>
+				(def lazy-fib
+  					(concat
+  					 [0 1]
+   					((fn rfib [a b]
+        				(lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+  					</code></pre>
+				</section>
 			</div>
 		</div>
 
