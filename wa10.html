@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Weekly Assignment 10</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/black.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/sky.min.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Adding Centered Slide Numbers</h1>
+					<img src="https://media.giphy.com/media/nXxOjZrbnbRxS/giphy.gif">
+
+				</section>
+
+
+				<section>
+					<h3>First, add slide numbers to your reveal.js presentation</h3>
+						<pre><code data-trim data-line-numbers=1-7|1,7|2|3|4-7><script type="text/template">
+							<pre><code data-trim data-line-numbers=1,5|2-4|2|3|4>
+								<script>
+									Reveal.initialize({
+										hash: true,
+										slideNumber: 'h/v'
+										plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+										})
+						    </code></pre>
+							</script></pre></code>
+						</code></pre>
+						<p>Note: This codew will be added to the bottom of your file.</p>
+				</section>
+
+				<section>
+					<p>This is my gif slide on 3402!</p>
+					<img src="https://media.giphy.com/media/kc0kqKNFu7v35gPkwB/giphy.gif">
+				</section>
+
+				<section>
+					<p>Here is a slide with a code block</p>
+					<pre><code data-trim data-noescape>
+					def addition(a, b):
+						return a+b
+  					</code></pre>
+				</section>
+
+				<section>
+					<h4>This is a slide with animations or transitions</h4>
+					<p>Click the next button</p>
+					<p class="fragment fade-in-then-semi-out">Coding transitions</p>
+					</p>
+					<p class="fragment highlight-green">can get</p>
+					<p class="fragment grow">EXCESSIVE!</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
