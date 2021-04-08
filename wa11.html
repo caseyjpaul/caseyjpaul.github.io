@@ -29,7 +29,7 @@
 
 				<section>
 					<h3>Visualization One</h3>
-					<p>More powerful engines are also less fuel efficient.</p>
+					<p>Bar Chart</p>
 				</section>
 
 				<section>
@@ -37,34 +37,100 @@
 					<div id="vis"></div>
 					<script type="text/javascript">
 						var spec = {
+							  "$schema": "https://vega.github.io/schema/vega/v5.json",
+							  "description": "A basic bar chart example, with value labels shown upon mouse hover.",
+							  "width": 400,
+							  "height": 200,
+							  "padding": 5,
 
- 			 				"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
- 			 				"config": {
-   			 				"view": {
-      							"continuousHeight": 600,
-      							"continuousWidth": 800
-    							}
-  							},
-  							"width": 800,
-  							"height": 600,
-  							"data": {
-    							"url": "https://vega.github.io/vega-datasets/data/cars.json"
-  							},
-  							"encoding": {
-    							"color": {
-      								"field": "Origin",
-      								"type": "nominal"
-    							},
-    							"x": {
-      								"field": "Horsepower",
-      								"type": "quantitative"
-    							},
-    							"y": {
-      								"field": "Miles_per_Gallon",
-      								"type": "quantitative"
-    							}
-  							},
-  							"mark": "point"
+							  "data": [
+							    {
+							      "name": "table",
+							      "values": [
+							        {"category": "A", "amount": 28},
+							        {"category": "B", "amount": 55},
+							        {"category": "C", "amount": 43},
+							        {"category": "D", "amount": 91},
+							        {"category": "E", "amount": 81},
+							        {"category": "F", "amount": 53},
+							        {"category": "G", "amount": 19},
+							        {"category": "H", "amount": 87}
+							      ]
+							    }
+							  ],
+
+							  "signals": [
+							    {
+							      "name": "tooltip",
+							      "value": {},
+							      "on": [
+							        {"events": "rect:mouseover", "update": "datum"},
+							        {"events": "rect:mouseout",  "update": "{}"}
+							      ]
+							    }
+							  ],
+
+							  "scales": [
+							    {
+							      "name": "xscale",
+							      "type": "band",
+							      "domain": {"data": "table", "field": "category"},
+							      "range": "width",
+							      "padding": 0.05,
+							      "round": true
+							    },
+							    {
+							      "name": "yscale",
+							      "domain": {"data": "table", "field": "amount"},
+							      "nice": true,
+							      "range": "height"
+							    }
+							  ],
+
+							  "axes": [
+							    { "orient": "bottom", "scale": "xscale" },
+							    { "orient": "left", "scale": "yscale" }
+							  ],
+
+							  "marks": [
+							    {
+							      "type": "rect",
+							      "from": {"data":"table"},
+							      "encode": {
+							        "enter": {
+							          "x": {"scale": "xscale", "field": "category"},
+							          "width": {"scale": "xscale", "band": 1},
+							          "y": {"scale": "yscale", "field": "amount"},
+							          "y2": {"scale": "yscale", "value": 0}
+							        },
+							        "update": {
+							          "fill": {"value": "steelblue"}
+							        },
+							        "hover": {
+							          "fill": {"value": "red"}
+							        }
+							      }
+							    },
+							    {
+							      "type": "text",
+							      "encode": {
+							        "enter": {
+							          "align": {"value": "center"},
+							          "baseline": {"value": "bottom"},
+							          "fill": {"value": "#333"}
+							        },
+							        "update": {
+							          "x": {"scale": "xscale", "signal": "tooltip.category", "band": 0.5},
+							          "y": {"scale": "yscale", "signal": "tooltip.amount", "offset": -2},
+							          "text": {"signal": "tooltip.amount"},
+							          "fillOpacity": [
+							            {"test": "datum === tooltip", "value": 0},
+							            {"value": 1}
+							          ]
+							        }
+							      }
+							    }
+							  ]
 							};
 	  				/* JSON dump of your chart's spec */
 						var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
@@ -80,7 +146,7 @@
 
 				<section>
 					<h3>Visualization Two</h3>
-					<p>More powerful engines are also less fuel efficient.</p>
+					<p>Line Chart</p>
 				</section>
 
 				<section>
@@ -88,34 +154,112 @@
 					<div id="vis"></div>
 					<script type="text/javascript">
 						var spec = {
+							  "$schema": "https://vega.github.io/schema/vega/v5.json",
+							  "description": "A basic line chart example.",
+							  "width": 500,
+							  "height": 200,
+							  "padding": 5,
 
- 			 				"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
- 			 				"config": {
-   			 				"view": {
-      							"continuousHeight": 600,
-      							"continuousWidth": 800
-    							}
-  							},
-  							"width": 800,
-  							"height": 600,
-  							"data": {
-    							"url": "https://vega.github.io/vega-datasets/data/cars.json"
-  							},
-  							"encoding": {
-    							"color": {
-      								"field": "Origin",
-      								"type": "nominal"
-    							},
-    							"x": {
-      								"field": "Horsepower",
-      								"type": "quantitative"
-    							},
-    							"y": {
-      								"field": "Miles_per_Gallon",
-      								"type": "quantitative"
-    							}
-  							},
-  							"mark": "point"
+							  "signals": [
+							    {
+							      "name": "interpolate",
+							      "value": "linear",
+							      "bind": {
+							        "input": "select",
+							        "options": [
+							          "basis",
+							          "cardinal",
+							          "catmull-rom",
+							          "linear",
+							          "monotone",
+							          "natural",
+							          "step",
+							          "step-after",
+							          "step-before"
+							        ]
+							      }
+							    }
+							  ],
+
+							  "data": [
+							    {
+							      "name": "table",
+							      "values": [
+							        {"x": 0, "y": 28, "c":0}, {"x": 0, "y": 20, "c":1},
+							        {"x": 1, "y": 43, "c":0}, {"x": 1, "y": 35, "c":1},
+							        {"x": 2, "y": 81, "c":0}, {"x": 2, "y": 10, "c":1},
+							        {"x": 3, "y": 19, "c":0}, {"x": 3, "y": 15, "c":1},
+							        {"x": 4, "y": 52, "c":0}, {"x": 4, "y": 48, "c":1},
+							        {"x": 5, "y": 24, "c":0}, {"x": 5, "y": 28, "c":1},
+							        {"x": 6, "y": 87, "c":0}, {"x": 6, "y": 66, "c":1},
+							        {"x": 7, "y": 17, "c":0}, {"x": 7, "y": 27, "c":1},
+							        {"x": 8, "y": 68, "c":0}, {"x": 8, "y": 16, "c":1},
+							        {"x": 9, "y": 49, "c":0}, {"x": 9, "y": 25, "c":1}
+							      ]
+							    }
+							  ],
+
+							  "scales": [
+							    {
+							      "name": "x",
+							      "type": "point",
+							      "range": "width",
+							      "domain": {"data": "table", "field": "x"}
+							    },
+							    {
+							      "name": "y",
+							      "type": "linear",
+							      "range": "height",
+							      "nice": true,
+							      "zero": true,
+							      "domain": {"data": "table", "field": "y"}
+							    },
+							    {
+							      "name": "color",
+							      "type": "ordinal",
+							      "range": "category",
+							      "domain": {"data": "table", "field": "c"}
+							    }
+							  ],
+
+							  "axes": [
+							    {"orient": "bottom", "scale": "x"},
+							    {"orient": "left", "scale": "y"}
+							  ],
+
+							  "marks": [
+							    {
+							      "type": "group",
+							      "from": {
+							        "facet": {
+							          "name": "series",
+							          "data": "table",
+							          "groupby": "c"
+							        }
+							      },
+							      "marks": [
+							        {
+							          "type": "line",
+							          "from": {"data": "series"},
+							          "encode": {
+							            "enter": {
+							              "x": {"scale": "x", "field": "x"},
+							              "y": {"scale": "y", "field": "y"},
+							              "stroke": {"scale": "color", "field": "c"},
+							              "strokeWidth": {"value": 2}
+							            },
+							            "update": {
+							              "interpolate": {"signal": "interpolate"},
+							              "strokeOpacity": {"value": 1}
+							            },
+							            "hover": {
+							              "strokeOpacity": {"value": 0.5}
+							            }
+							          }
+							        }
+							      ]
+							    }
+							  ]
 							};
 	  				/* JSON dump of your chart's spec */
 						var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
