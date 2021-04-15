@@ -146,10 +146,10 @@
 					<p>To change color of the marks (in this case they were bars): </p>
 						<pre><code data-trim class='js' data-line-numbers=3-6>
 						{
-							...
-							"mark": {
-								"type": "bar",
-								"color": "red"
+								...
+								"mark": {
+										"type": "bar",
+										"color": "red"
 							},
 							...
 						};
@@ -162,12 +162,12 @@
 						{	
 							...
 							"encoding": {
-								"y": {
-									"aggregate": "count", 
-									"title": "Number of Deaths",
-									"axis":{
-										"labelColor": "red",
-										"labelFontSize": 20
+									"y": {
+										"aggregate": "count", 
+										"title": "Number of Deaths",
+										"axis":{
+											"labelColor": "red",
+											"labelFontSize": 20
 							...
 						}	
 						</code></pre>
@@ -181,7 +181,7 @@
 							"width": "900",
 							"height": 600,
 							"config": {
-								"font":"monospace"
+									"font":"monospace"
 							},
 							...
 						};
@@ -209,7 +209,10 @@
 							"config":{
 								"font":"Times New Roman"
 							},
-							"mark": "point",
+							"mark": {
+								"type": "circle",
+								"size": 18,
+							},
 							"encoding": {
 								"x": {
 									"field": "Year",
