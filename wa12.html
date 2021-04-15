@@ -101,8 +101,9 @@
 						<script type="text/javascript">
 						var spec = {
 							"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-							"width": 11000,
+							"width": 950,
 							"height": 600,
+							"config": "monospace"
 							"data": {
 								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
 							},
@@ -116,7 +117,7 @@
 									"type": "temporal",
 									"title": "Year",
 									"axis": {
-										"titleFontSize": 15
+										"titleFontSize": 20
 									}
 								},
 								"y": {
@@ -124,7 +125,7 @@
 									"type": "quantitative",
 									"title": "Number of Deaths",
 									"axis": {
-										"titleFontSize": 15
+										"titleFontSize": 20
 									}
 								}
 							}
@@ -139,6 +140,49 @@
 					<p>goes here</p>
 				</section>
 
+				<section>
+					<p>To change color of the marks (in this case they were bars): </p>
+						<pre><code data-trim class='js' data-line-numbers=3-6>
+						{
+							...
+							"mark": {
+								"type": "bar",
+								"color": "red"
+							},
+							...
+						};
+						</code></pre>
+				</section>
+
+				<section>
+					<p>To change font size</p>
+					<pre><code data-trim class='js' data-line-numbers=3,6-8>
+							...
+							"encoding": {
+								"y": {
+									"aggregate": "count", 
+									"title": "Number of Deaths",
+									"axis":{
+										"labelColor": "red",
+										"labelFontSize": 20
+							...
+						</code></pre>
+				</section>
+
+				<section>
+					<p>To change the font</p>
+					<pre><code data-trim class='js' data-line-numbers=5-7>
+						{
+							...
+							"width": "950",
+							"height": 600,
+							"config": {
+								"font":"monospace"
+							},
+							...
+						};
+						</code></pre>
+				</section>
 
 				<section>
 					<h3>Visualization Two</h3>
@@ -156,7 +200,7 @@
 							"data": {
 								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
 							},
-							"width":1000,
+							"width":950,
 							"height":600,
 							"config":{
 								"font":"Times New Roman"
