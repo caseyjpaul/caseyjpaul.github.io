@@ -201,20 +201,20 @@
 						<script type="text/javascript">
 						var spec = {
 							"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-							"width": "container",
+							"width": 900,
 							"height": 600,
 							"data": {
 								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
 							},
 							"encoding": {
-								"y": {
-									"field": "Entity",
-									"type": "nominal"
-								},
 								"x": {
 									"field": "Deaths", 
 									"title": "Number of Deaths",
 									"type": "quantitative"
+								},
+								"y": {
+									"field": "Entity",
+									"type": "nominal"
 								},
 								"color": {
 									"field": "Entity",
@@ -226,7 +226,7 @@
 							},{
 								"mark": {
 									"type": "text",
-									"align": "left",
+									"align": "bottom",
 									"baseline": "middle",
 									"dx": 25
 								},
