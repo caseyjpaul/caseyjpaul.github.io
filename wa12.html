@@ -201,35 +201,42 @@
 						<script type="text/javascript">
 						var spec = {
 							"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+							"width": 300,
+							"height": 200,
 							"data": {
 								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
 							},
-							"height":200,
-							"config":{
-								"font":"Times New Roman"
-							},
-							"mark":"bar",
 							"encoding": {
-								"x": {
-									"field": "Year",
-									"type": "temporal",
-									"bin": {
-										"maxbins": 15
-								},
-									"spacing": 10
-								},
 								"y": {
-									"field": "Deaths",
-									"type": "quantitative",
-								},
-								"column": {
 									"field": "Entity",
-									"type": "nominal",
+									"type": "nominal"
+								},
+								"x": {
+									"field": "Deaths", 
+									"title": "Number of Deaths",
+									"type": "quantitative"
+								},
+								"color": {
+									"field": "Entity",
+									"type": "nominal"
 								}
-								//"color": {
-									//"field": "Entity",
-									//"type": "nominal"
-							}	
+							},
+							"layer":[{
+								"mark": "bar"
+							},{
+								"mark": {
+									"type": "text",
+									"align": "left",
+									"baseline": "middle",
+									"dx": 5
+								},
+								"encoding": {
+									"text": {
+										"aggregate": "count",
+										"type": "quantitative"
+									}
+								}
+							}
 						};
 						var opt = {"renderer": "canvas", "actions": false};
 						vegaEmbed("#disasters02", spec, opt);
