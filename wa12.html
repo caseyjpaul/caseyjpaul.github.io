@@ -204,36 +204,31 @@
 							"data": {
 								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
 							},
-							"width":"container",
-							"height":"container",
+							"height":200,
 							"config":{
 								"font":"Times New Roman"
 							},
-							"mark": {
-								"type": "bar",
-								"size": 40,
-							},
+							"mark":"bar",
 							"encoding": {
 								"x": {
-									"field": "Entity",
-									"type": "nominal",
+									"field": "Year",
+									"type": "temporal",
+									"bin": {
+										"maxbins": 15
+								},
+									"spacing": 10
 								},
 								"y": {
 									"field": "Deaths",
 									"type": "quantitative",
 								},
 								"column": {
-									"field": "Year",
-									"type": "temporal",
-									"bin": {
-										"maxbins": 15
-									},
-									"spacing": 20
-								},
-								"color": {
 									"field": "Entity",
-									"type": "nominal"
+									"type": "nominal",
 								}
+								//"color": {
+									//"field": "Entity",
+									//"type": "nominal"
 							}	
 						};
 						var opt = {"renderer": "canvas", "actions": false};
