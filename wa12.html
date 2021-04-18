@@ -170,7 +170,7 @@
 											"labelFontSize": 20
 							...
 						}	
-						</code></pre>
+					</code></pre>
 				</section>
 
 				<section>
@@ -185,16 +185,13 @@
 							},
 							...
 						};
-						</code></pre>
+					</code></pre>
 				</section>
 
 				<section>
 					<h3>Visualization Two</h3>
 					<p>Horizontal Bar Chart</p>
-					<p>Instruction: Use composition</p>
-					<ul>
-						<li>I used layering. Layering is when we layer text over our visual.</li>
-					</ul>
+					<p>Use composition in some way. I will be using layering.</p>
 				</section>
 
 				<section>
@@ -204,7 +201,7 @@
 						<script type="text/javascript">
 						var spec = {
 							"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-							"width": 600,
+							"width": 800,
 							"height": 400,
 							"data": {
 								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
@@ -230,11 +227,12 @@
 								"mark": {
 									"type": "text",
 									"align": "right",
-									"baseline": "right",
-									"dx": 400
+									"baseline": "line-top",
+									"dx": 700
 								},
 								"encoding": {
 									"text": {
+										//"aggregate": "count",
 										"field": "Deaths",
 										"type": "quantitative"
 									}
@@ -248,7 +246,161 @@
 
 				<section>
 					<h3>Interpretation</h3>
-					<p>goes here</p>
+					<p>One of the categories of natural disasters is "All Natural Disasters". I am assuming this is all deaths from natural disasters, and will be disreagrding this bar in the bar chart.</p>
+					<p>We can see that drought, epidemics, and floods have the most deaths when it comes to which natural disasteer kills the most people. I think once this dataset starts to include 2019,2020, and 2021 we will see the epidemic bar grow.</p>
+				</section>
+
+				<section>
+						<h2>How to add layers</h2>
+						<p>Define your X and Y encoding channels</p>
+						<pre><code data-trim class='js' data-line-numbers=1-10|2-6|7-10>
+							"encoding": {
+								"x": {
+									"field": "Deaths", 
+									"title": "Number of Deaths",
+									"type": "quantitative"
+								},
+								"y": {
+									"field": "Entity",
+									"type": "nominal"
+								},
+								"color": {
+									"field": "Entity",
+									"type": "nominal"
+								}
+							},
+							"layer":[{
+								"mark": "bar"
+							},{
+								"mark": {
+									"type": "text",
+									"align": "right",
+									"baseline": "line-top",
+									"dx": 700
+								},
+								"encoding": {
+									"text": {
+										//"aggregate": "count",
+										"field": "Deaths",
+										"type": "quantitative"
+									}
+								}
+					</code></pre>	
+				</section>
+
+				<section>
+						<h2>How to add layers</h2>
+						<p>Then add your layering fields</p>
+						<pre><code data-trim class='js' data-line-numbers=16-31>
+							"encoding": {
+								"x": {
+									"field": "Deaths", 
+									"title": "Number of Deaths",
+									"type": "quantitative"
+								},
+								"y": {
+									"field": "Entity",
+									"type": "nominal"
+								},
+								"color": {
+									"field": "Entity",
+									"type": "nominal"
+								}
+							},
+							"layer":[{
+								"mark": "bar"
+							},{
+								"mark": {
+									"type": "text",
+									"align": "right",
+									"baseline": "line-top",
+									"dx": 700
+								},
+								"encoding": {
+									"text": {
+										//"aggregate": "count",
+										"field": "Deaths",
+										"type": "quantitative"
+									}
+								}
+						</code></pre>	
+				</section>
+
+				<section>
+						<h2>How to add layers</h2>
+						<p>Define what mark your visual will be</p>
+						<p>The define the next mark, which are the specifications for your text annoations.</p>
+						<pre><code data-trim class='js' data-line-numbers=16-17|18-24>
+							"encoding": {
+								"x": {
+									"field": "Deaths", 
+									"title": "Number of Deaths",
+									"type": "quantitative"
+								},
+								"y": {
+									"field": "Entity",
+									"type": "nominal"
+								},
+								"color": {
+									"field": "Entity",
+									"type": "nominal"
+								}
+							},
+							"layer":[{
+								"mark": "bar"
+							},{
+								"mark": {
+									"type": "text",
+									"align": "right",
+									"baseline": "line-top",
+									"dx": 700
+								},
+								"encoding": {
+									"text": {
+										//"aggregate": "count",
+										"field": "Deaths",
+										"type": "quantitative"
+									}
+								}
+						</code></pre>	
+				</section>
+
+				<section>
+						<h2>How to add layers</h2>
+						<p>Lastly, "encoding" defines where the text will show up on the visual.</p>
+						<pre><code data-trim class='js' data-line-numbers=25-31>
+							"encoding": {
+								"x": {
+									"field": "Deaths", 
+									"title": "Number of Deaths",
+									"type": "quantitative"
+								},
+								"y": {
+									"field": "Entity",
+									"type": "nominal"
+								},
+								"color": {
+									"field": "Entity",
+									"type": "nominal"
+								}
+							},
+							"layer":[{
+								"mark": "bar"
+							},{
+								"mark": {
+									"type": "text",
+									"align": "right",
+									"baseline": "line-top",
+									"dx": 700
+								},
+								"encoding": {
+									"text": {
+										//"aggregate": "count",
+										"field": "Deaths",
+										"type": "quantitative"
+									}
+								}
+						</code></pre>	
 				</section>
 
 				<section>
