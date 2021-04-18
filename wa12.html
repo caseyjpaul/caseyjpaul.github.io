@@ -89,8 +89,8 @@
 				</section>
 
 				<section>
-					<h3>Visualization One</h3>
-					<p>Bar Chart</p>
+					<h2>Visualization One</h2>
+					<h3>Bar Chart</h3>
 					<p>Change colors, fonts, and font size</p>
 				</section>
 
@@ -143,54 +143,67 @@
 				</section>
 
 				<section>
-					<p>To change color of the marks (in this case they were bars): </p>
-						<pre><code data-trim class='js' data-line-numbers=3-6>
-						{
+
+					<section>
+						<h2>How to make aesthetic changes</h2>
+						<ol style="text-align: center;">
+							<li>Mark colors</li>
+							<li>Font size</li>
+							<li>Font</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>Changing the color of the marks</h2>
+						<p>In this case they were bars</p>
+							<pre><code data-trim class='js' data-line-numbers=3-6>
+							{
+									...
+									"mark": {
+											"type": "bar",
+											"color": "red"
+								},
 								...
-								"mark": {
-										"type": "bar",
-										"color": "red"
-							},
-							...
-						};
+							};
+							</code></pre>
+					</section>
+
+					<section>
+						<h2>Changing font size</h2>
+						<pre><code data-trim class='js' data-line-numbers=3,6-8>
+							{	
+								...
+								"encoding": {
+										"y": {
+											"aggregate": "count", 
+											"title": "Number of Deaths",
+											"axis":{
+												"labelColor": "red",
+												"labelFontSize": 20
+								...
+							}	
 						</code></pre>
-				</section>
+					</section>
+
+					<section>
+						<h2>Changing the font</h2>
+						<pre><code data-trim class='js' data-line-numbers=5-7>
+							{
+								...
+								"width": "900",
+								"height": 600,
+								"config": {
+										"font":"Times New Roman"
+								},
+								...
+							};
+						</code></pre>
+					</section>
+				</section>	
 
 				<section>
-					<p>To change font size</p>
-					<pre><code data-trim class='js' data-line-numbers=3,6-8>
-						{	
-							...
-							"encoding": {
-									"y": {
-										"aggregate": "count", 
-										"title": "Number of Deaths",
-										"axis":{
-											"labelColor": "red",
-											"labelFontSize": 20
-							...
-						}	
-					</code></pre>
-				</section>
-
-				<section>
-					<p>To change the font</p>
-					<pre><code data-trim class='js' data-line-numbers=5-7>
-						{
-							...
-							"width": "900",
-							"height": 600,
-							"config": {
-									"font":"monospace"
-							},
-							...
-						};
-					</code></pre>
-				</section>
-
-				<section>
-					<h3>Visualization Two</h3>
-					<p>Horizontal Bar Chart</p>
+					<h2>Visualization Two</h2>
+					<h3>Horizontal Bar Chart</h3>
 					<p>Use composition in some way. I will be using layering.</p>
 				</section>
 
@@ -251,6 +264,7 @@
 				</section>
 
 				<section>
+					<section>
 						<h2>How to add layers</h2>
 						<p>Define your X and Y encoding channels</p>
 						<pre><code data-trim class='js' data-line-numbers=1-10|2-6|7-10>
@@ -285,126 +299,128 @@
 										"type": "quantitative"
 									}
 								}
-					</code></pre>	
-				</section>
+						</code></pre>
+					</section>	
+				
 
-				<section>
-						<h2>How to add layers</h2>
-						<p>Then add your layering fields</p>
-						<pre><code data-trim class='js' data-line-numbers=16-31>
-							"encoding": {
-								"x": {
-									"field": "Deaths", 
-									"title": "Number of Deaths",
-									"type": "quantitative"
-								},
-								"y": {
-									"field": "Entity",
-									"type": "nominal"
-								},
-								"color": {
-									"field": "Entity",
-									"type": "nominal"
-								}
-							},
-							"layer":[{
-								"mark": "bar"
-							},{
-								"mark": {
-									"type": "text",
-									"align": "right",
-									"baseline": "line-top",
-									"dx": 700
-								},
+					<section>
+							<h2>How to add layers</h2>
+							<p>Then add your layering fields</p>
+							<pre><code data-trim class='js' data-line-numbers=16-31>
 								"encoding": {
-									"text": {
-										//"aggregate": "count",
-										"field": "Deaths",
+									"x": {
+										"field": "Deaths", 
+										"title": "Number of Deaths",
 										"type": "quantitative"
+									},
+									"y": {
+										"field": "Entity",
+										"type": "nominal"
+									},
+									"color": {
+										"field": "Entity",
+										"type": "nominal"
 									}
-								}
-						</code></pre>	
-				</section>
+								},
+								"layer":[{
+									"mark": "bar"
+								},{
+									"mark": {
+										"type": "text",
+										"align": "right",
+										"baseline": "line-top",
+										"dx": 700
+									},
+									"encoding": {
+										"text": {
+											//"aggregate": "count",
+											"field": "Deaths",
+											"type": "quantitative"
+										}
+									}
+							</code></pre>	
+					</section>
 
-				<section>
-						<h2>How to add layers</h2>
-						<p>Define what mark your visual will be</p>
-						<p>The define the next mark, which are the specifications for your text annoations.</p>
-						<pre><code data-trim class='js' data-line-numbers=16-17|18-24>
-							"encoding": {
-								"x": {
-									"field": "Deaths", 
-									"title": "Number of Deaths",
-									"type": "quantitative"
-								},
-								"y": {
-									"field": "Entity",
-									"type": "nominal"
-								},
-								"color": {
-									"field": "Entity",
-									"type": "nominal"
-								}
-							},
-							"layer":[{
-								"mark": "bar"
-							},{
-								"mark": {
-									"type": "text",
-									"align": "right",
-									"baseline": "line-top",
-									"dx": 700
-								},
+					<section>
+							<h2>How to add layers</h2>
+							<p>Define what mark your visual will have</p>
+							<p>Then define the next mark, which are the specifications for your text annoations.</p>
+							<pre><code data-trim class='js' data-line-numbers=16-17|18-24>
 								"encoding": {
-									"text": {
-										//"aggregate": "count",
-										"field": "Deaths",
+									"x": {
+										"field": "Deaths", 
+										"title": "Number of Deaths",
 										"type": "quantitative"
+									},
+									"y": {
+										"field": "Entity",
+										"type": "nominal"
+									},
+									"color": {
+										"field": "Entity",
+										"type": "nominal"
 									}
-								}
-						</code></pre>	
-				</section>
+								},
+								"layer":[{
+									"mark": "bar"
+								},{
+									"mark": {
+										"type": "text",
+										"align": "right",
+										"baseline": "line-top",
+										"dx": 700
+									},
+									"encoding": {
+										"text": {
+											//"aggregate": "count",
+											"field": "Deaths",
+											"type": "quantitative"
+										}
+									}
+							</code></pre>	
+					</section>
 
-				<section>
-						<h2>How to add layers</h2>
-						<p>Lastly, "encoding" defines where the text will show up on the visual.</p>
-						<pre><code data-trim class='js' data-line-numbers=25-31>
-							"encoding": {
-								"x": {
-									"field": "Deaths", 
-									"title": "Number of Deaths",
-									"type": "quantitative"
-								},
-								"y": {
-									"field": "Entity",
-									"type": "nominal"
-								},
-								"color": {
-									"field": "Entity",
-									"type": "nominal"
-								}
-							},
-							"layer":[{
-								"mark": "bar"
-							},{
-								"mark": {
-									"type": "text",
-									"align": "right",
-									"baseline": "line-top",
-									"dx": 700
-								},
+					<section>
+							<h2>How to add layers</h2>
+							<p>Lastly, "encoding" defines where the text will show up on the visual.</p>
+							<pre><code data-trim class='js' data-line-numbers=25-31>
 								"encoding": {
-									"text": {
-										//"aggregate": "count",
-										"field": "Deaths",
+									"x": {
+										"field": "Deaths", 
+										"title": "Number of Deaths",
 										"type": "quantitative"
+									},
+									"y": {
+										"field": "Entity",
+										"type": "nominal"
+									},
+									"color": {
+										"field": "Entity",
+										"type": "nominal"
 									}
-								}
-						</code></pre>	
-				</section>
+								},
+								"layer":[{
+									"mark": "bar"
+								},{
+									"mark": {
+										"type": "text",
+										"align": "right",
+										"baseline": "line-top",
+										"dx": 700
+									},
+									"encoding": {
+										"text": {
+											//"aggregate": "count",
+											"field": "Deaths",
+											"type": "quantitative"
+										}
+									}
+							</code></pre>	
+					</section>
+				</section>	
 
 				<section>
-					<h3>Hopefully this helps!</h3>
+					<h1>Hopefully this helps!</h1>
 					<img src="https://media.giphy.com/media/CVbWtbB9ri1VPS2ViN/giphy.gif">
 				</section>
 
