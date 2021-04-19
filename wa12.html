@@ -213,44 +213,90 @@
 						
 						<script type="text/javascript">
 						var spec = {
+
 							"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-							"width": 800,
+
+							"width": 400,
+
 							"height": 400,
+
 							"data": {
-								"url": "https://vega.github.io/vega-datasets/data/disasters.csv"
+
+							    "url": "https://vega.github.io/vega-datasets/data/disasters.csv"
+
 							},
+
 							"encoding": {
-								"x": {
-									"field": "Deaths", 
-									"title": "Number of Deaths",
-									"type": "quantitative"
-								},
-								"y": {
-									"field": "Entity",
-									"type": "nominal"
-								},
-								"color": {
-									"field": "Entity",
-									"type": "nominal"
-								}
+
+							    "x": {
+
+							        "aggregate": "sum",
+
+							        "field": "Deaths",
+
+							        "title": "Number of Deaths",
+
+							        "type": "quantitative",
+
+							        "scale": {"type": "log"}
+
+							    },
+
+							    "y": {
+
+							        "field": "Entity",
+
+							        "type": "nominal",
+
+							        "sort": "-x"
+
+							    },
+
+							    "color": {
+
+							        "field": "Entity",
+
+							       "type": "nominal"
+
+							    }
+
 							},
+
 							"layer":[{
-								"mark": "bar"
+
+							    "mark": "bar"
+
 							},{
-								"mark": {
-									"type": "text",
-									"align": "right",
-									"baseline": "line-top",
-									"dx": 700
-								},
-								"encoding": {
-									"text": {
-										//"aggregate": "count",
-										"field": "Deaths",
-										"type": "quantitative"
-									}
-								}
-							}],
+
+							    "mark": {
+
+							        "type": "text",
+
+							        "align": "left",
+
+							        "baseline": "middle",
+
+							        "dx": 5
+
+							    },
+
+							    "encoding": {
+
+							        "text": {
+
+							            "aggregate": "sum",
+
+							            "field": "Deaths",
+
+							            "type": "quantitative",
+
+							            "format": ",.0f"
+
+							        }
+
+							    }
+
+							}]
 						};
 						var opt = {"renderer": "canvas", "actions": false};
 						vegaEmbed("#disasters02", spec, opt);
@@ -259,7 +305,7 @@
 
 				<section>
 					<h3>Interpretation</h3>
-					<p>One of the categories of natural disasters is "All Natural Disasters". I am assuming this is all deaths from natural disasters, and will be disreagrding this bar in the bar chart.</p>
+					<p>One of the categories of natural disasters is "All Natural Disasters". I am assuming this is all deaths from natural disasters, and will be disreagrding this bar in my interpretation of the chart.</p>
 					<p>We can see that drought, epidemics, and floods have the most deaths when it comes to which natural disasteer kills the most people. I think once this dataset starts to include 2019,2020, and 2021 we will see the epidemic bar grow.</p>
 				</section>
 
