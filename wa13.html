@@ -116,24 +116,21 @@ body {
         var spec = {
 
            "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-            "width": 400,
-            "height": 200,
+            "width": 600,
+            "height": 350,
             "data": {
-              "url": "https://www.kaggle.com/dhruvildave/dogecoin-historical-data"
+              "url": "https://datahub.io/cryptocurrency/dogecoin/r/0.html"
             },
+
             "encoding": {
-              "color": {
-                  "field": "High",
-                  "type": "quantitative"
-              },
               "x": {
-                  "field": "Date",
+                  "field": "date",
                   "type": "temporal"
               },
               "y": {
-                  "field": "High",
+                  "field": "Price(USD)",
                   "type": "quantitative"
-              }
+              },
             },
             "mark": "line"
           };
@@ -149,14 +146,8 @@ body {
         var spec = {
 
            "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-           "config": {
-             "view": {
-                "continuousHeight": 600,
-                "continuousWidth": 800
-              }
-            },
-            "width": 400,
-            "height": 200,
+            "width": 600,
+            "height": 350,
             "data": {
               "url": "https://vega.github.io/vega-datasets/data/cars.json"
             },
