@@ -122,22 +122,24 @@ div.a {
         var spec = {
 
            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "width": 700,
-            "height": 350,
+            "width": 1100,
+            "height": 500,
             "data": {
-              "url": "https://pkgstore.datahub.io/cryptocurrency/dogecoin/dogecoin_csv/data/492e9a6143d017e8eb08c08ae0006b34/dogecoin_csv.csv"
+              "url": "https://raw.githubusercontent.com/cuinfoscience/INFO3402-Spring2021/main/Week16/DOGE-USD.csv"
             },
 
             "mark": "line",
 
             "encoding": {
               "x": {
-                  "field": "date",
-                  "type": "temporal"
+                  "field": "Date",
+                  "type": "temporal",
+                  "timeUnit": "yearmonthdate"
               },
               "y": {
-                  "field": "price(USD)",
-                  "type": "quantitative"
+                  "field": "Close",
+                  "type": "quantitative",
+                  "aggregate": "mean"
               },
             },
           };
@@ -146,7 +148,7 @@ div.a {
         vegaEmbed("#vis01", spec, opt);
       </script>
 
-      <p>Above is a line graph depicting the price of Dogecoin in USD from late 2013 to mid 2018. I wish I could have found a dataset that included 2021 prices because it would have been interesting to see the prices after the stock market crisis, but for now this will do. We can see there is a spike in early 2014 after Dogecoin was first released but it starts to slowly decline in March of that year. The next great spike is in May and June of 2017, however it declines again in August of that year. The biggest spike in prices is in January of 2018. I am not educated enough in this subject to know why, but that was when Dogecoin was at an all time high. Since then it has decreased in price, but still remained higher than it ever has in its existence. </p>
+      <p>Above is a line graph depicting the price of Dogecoin in USD from late 2013 to April 25th, 2021. At first glance there is a huge spike in 2021 and this is because of the recent stock market crisis where people were talking about Dogecoin prices going way up. The recent stock market crisis involving r/WallStreetBets happened in late January, and we can see there is a spike around that time period. The largest spike of all begings in early April and has continued to go up. Looking at the history of Dogecoin pricing, there is a small spike in May and June of 2017, however it declines again in August of that year. There are much smaller spikes from April 2018 to around November or December of that year, however, they drop again and stay constant until January of 2021. I am not educated enough in this subject to know what caused the smaller spikes in the past, but I do know why there are many recent spikes in the data. </p>
       <br>
 
       <div id="vis02"></div>
@@ -154,11 +156,12 @@ div.a {
         var spec = {
 
            "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-            "width": 700,
-            "height": 350,
+            "width": 1100,
+            "height": 500,
             "data": {
               "url": "https://vega.github.io/vega-datasets/data/co2-concentration.csv"
             },
+
             "encoding": {
               "x": {
                   "field": "Date",
@@ -184,38 +187,11 @@ div.a {
   </div>
 </div>
 
-<div id="vis03"></div>
-      <script type="text/javascript">
-        var spec = {
-
-           "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "width": 700,
-            "height": 350,
-            "data": {
-              "url": "https://finance.yahoo.com/quote/DOGE-USD/history?period1=1411516800&period2=1619395200&interval=1d&filter=history&frequency=1d&includeAdjustedClose=true"
-            },
-
-            "mark": "line",
-
-            "encoding": {
-              "x": {
-                  "field": "Date",
-                  "type": "temporal"
-              },
-              "y": {
-                  "field": "High",
-                  "type": "quantitative"
-              },
-            },
-          };
-        /* JSON dump of your chart's spec */
-        var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
-        vegaEmbed("#vis03", spec, opt);
-      </script>
+<p>**Note: I tried to filter the CO2 concentration data to start at 2014-01-01 using a transform and filter so that the axes on both visuals would be the same, but I could not get my visual to load if I did that.**</p>
 
 <div class="footer">
   <h2>Sources</h2>
-  <p><a href="https://datahub.io/cryptocurrency/dogecoin/r/0.html">Dogecoin Dataset</a></p>
+  <p><a href="https://finance.yahoo.com/quote/DOGE-USD/history?period1=1410825600&period2=1619395200&interval=1d&filter=history&frequency=1d&includeAdjustedClose=true">Yahoo! Finance Dogecoin Dataset</a></p>
     <p><a href="https://github.com/vega/vega-datasets/blob/master/data/co2-concentration.csv">CO2 Concentration Data</a></p>
     <p><a href="https://www.forbes.com/advisor/investing/what-is-dogecoin/">An Introduction to Dogecoin, The Meme Cryptocurrency (Forbes.com)</a></p>
 </div>
