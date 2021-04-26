@@ -184,6 +184,35 @@ div.a {
   </div>
 </div>
 
+<div id="vis03"></div>
+      <script type="text/javascript">
+        var spec = {
+
+           "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": 700,
+            "height": 350,
+            "data": {
+              "url": "https://finance.yahoo.com/quote/DOGE-USD/history?period1=1411516800&period2=1619395200&interval=1d&filter=history&frequency=1d&includeAdjustedClose=true"
+            },
+
+            "mark": "line",
+
+            "encoding": {
+              "x": {
+                  "field": "Date",
+                  "type": "temporal"
+              },
+              "y": {
+                  "field": "High",
+                  "type": "quantitative"
+              },
+            },
+          };
+        /* JSON dump of your chart's spec */
+        var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+        vegaEmbed("#vis03", spec, opt);
+      </script>
+
 <div class="footer">
   <h2>Sources</h2>
   <p><a href="https://datahub.io/cryptocurrency/dogecoin/r/0.html">Dogecoin Dataset</a></p>
